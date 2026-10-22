@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Question;
 use App\Models\Answer;
 use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -48,6 +49,11 @@ class DatabaseSeeder extends Seeder
             'user_id' => fn() => User::inRandomOrder()->first()->id,
             'commentable_id' => fn() => $questions->random()->id,
             'commentable_type' => Question::class,
+        ]);
+
+        Post::factory(21)->create([
+            'user_id' => fn() => User::inRandomOrder()->first()->id,
+            'category_id' => fn() => $categories->random()->id,
         ]);
     }
 }
