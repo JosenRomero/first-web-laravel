@@ -67,4 +67,4 @@
 
     </ul>
 
-<x-forum.layouts.app>
+</x-forum.layouts.app>
