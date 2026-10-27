@@ -12,7 +12,7 @@
       <div class="flex gap-4">
         <div class="flex-auto">
           <p class="text-sm font-semibold">
-            <a href="#" class="hover:underline">
+            <a href="{{ route('posts.show', $post) }}" class="hover:underline">
               {{ $post->title }}
             </a>
           </p>
