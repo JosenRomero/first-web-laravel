@@ -39,6 +39,11 @@ class DatabaseSeeder extends Seeder
             'user_id' => fn() => User::inRandomOrder()->first()->id,
         ]);
 
+        $posts = Post::factory(21)->create([
+            'user_id' => fn() => User::inRandomOrder()->first()->id,
+            'category_id' => fn() => $categories->random()->id,
+        ]);
+
         Comment::factory(100)->create([
             'user_id' => fn() => User::inRandomOrder()->first()->id,
             'commentable_id' => fn() => $answers->random()->id,
@@ -51,9 +56,11 @@ class DatabaseSeeder extends Seeder
             'commentable_type' => Question::class,
         ]);
 
-        Post::factory(21)->create([
+        Comment::factory(100)->create([
             'user_id' => fn() => User::inRandomOrder()->first()->id,
-            'category_id' => fn() => $categories->random()->id,
+            'commentable_id' => fn() => $posts->random()->id,
+            'commentable_type' => Post::class,
         ]);
+
     }
 }
