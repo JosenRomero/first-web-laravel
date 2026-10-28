@@ -10,7 +10,12 @@ class Post extends Model
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
 
+    public function comments() {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function user() {
         return $this->belongsTo(User::class);
     }
+
 }
