@@ -7,6 +7,22 @@ new class extends Component {
 
     public Model $commentable;
     public bool $showForm = false;
+    public string $newComment = '';
+
+    public function addComment()
+    {
+
+        $this->validate([
+            'newComment' => 'required|string|max:255',
+        ]);
+
+        $this->commentable->comments()->create([
+            'content' => $this->newComment,
+            'user_id' => 20, // TODO: Replace with the actual user ID
+        ]);
+
+        $this->reset('newComment', 'showForm');
+    }
 
     public function toggle()
     {
@@ -54,7 +70,17 @@ new class extends Component {
         </a>
     </p>
     @else
-    Formulario de comentario:
+    <form wire:submit="addComment">
+        <div class="flex gap-2">
+            <input type="text" wire:model="newComment" class="w-full text-xs outline-none" placeholder="Escribe tu comentario aquí..." required autofocus>
+
+            <button type="button" wire:click="toggle" class="text-xs text-gray-300 hover:underline cursor-pointer">Cancelar</button>
+            <button type="submit" class="text-xs text-white bg-blue-600 hover:bg-blue-500 rounded-md px-2 py-1 cursor-pointer">
+                Comentar
+            </button>
+        </div>
+        @error('content') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+    </form>
     @endif
 
 </div>
