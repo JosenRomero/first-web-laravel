@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
@@ -15,8 +16,10 @@ Route::get('blog', [BlogController::class, 'getPosts'])->name('blog');
 
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
+Route::post('answers/{question}', [AnswerController::class, 'store'])->name('answers.store');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
 });
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';

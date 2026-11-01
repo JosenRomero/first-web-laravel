@@ -69,4 +69,23 @@
 
     </ul>
 
+    <!-- answer form -->
+    <div class="mt-8">
+        <h3 class="text-lg font-semibold mb-2">Agrega una Respuesta...</h3>
+
+        <form action="{{ route('answers.store', $question) }}" method="POST">
+            @csrf
+
+            <div class="mb-2">
+                <textarea name="newAnswer" rows="6" class="w-full p-2 border rounded-md text-xs" required></textarea>
+                @error('content')<span class="block text-red-500 text-xs">{{ $message }}</span>@enderror
+            </div>
+
+            <button type="submit" class="rounded-md bg-blue-600 hover:bg-blue-500 px-4 py-2 text-white cursor-pointer">
+                Enviar Respuesta
+            </button>
+        </form>
+    </div>
+    <!-- answer form  | end -->
+
 </x-forum.layouts.app>
