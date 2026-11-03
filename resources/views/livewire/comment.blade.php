@@ -56,7 +56,7 @@ new class extends Component {
                 </span>
             </p>
 
-            <livewire:heart :heartable="$comment" />
+            <livewire:heart :heartable="$comment" wire:key="comment-heart-{{ $comment->id }}" />
 
         </li>
 
