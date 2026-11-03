@@ -56,7 +56,8 @@ new class extends Component {
                 </span>
             </p>
 
-            <div>&hearts;</div>
+            <livewire:heart :heartable="$comment" />
+
         </li>
 
         @endforeach
