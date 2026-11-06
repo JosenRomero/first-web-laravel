@@ -18,6 +18,8 @@ Route::get('blog', [BlogController::class, 'getPosts'])->name('blog');
 
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
+Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
 Route::post('answers/{question}', [AnswerController::class, 'store'])->name('answers.store');
 
 Route::middleware(['auth', 'verified'])->group(function () {

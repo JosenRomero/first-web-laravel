@@ -18,7 +18,7 @@
                     {{ $post->created_at->diffForHumans() }}
                 </p>
                 <div class="flex items-center gap-2">
-                    <form action="#" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este post?');">
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este post?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="rounded-md bg-red-600 hover:bg-red-500 px-2 py-1 text-xs font-semibold text-white cursor-pointer">
