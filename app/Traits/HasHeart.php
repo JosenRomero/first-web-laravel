@@ -14,6 +14,9 @@ trait HasHeart
   // Returns true if a user liked it, returns false otherwise
   public function isHearted()
   {
+    if ($this->relationLoaded('hearts')) {
+      return $this->hearts()->isNotEmpty();
+    }
     return $this->hearts()->where('user_id', 20)->exists(); // TODO: Replace user ID
   }
 
