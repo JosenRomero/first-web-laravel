@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 
+Route::get('questions/create', [QuestionController::class, 'create'])->name('questions.create');
+
 Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
+
+Route::post('questions', [QuestionController::class, 'save'])->name('questions.save');
 
 Route::get('questions', [QuestionController::class, 'index'])->name('questions.index');
 

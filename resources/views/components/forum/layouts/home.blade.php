@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body>
     <div class="h-screen flex flex-col">
         <div class="px-4">
@@ -24,21 +26,22 @@
                         Resuelve tus preguntas de programación. <a href="#" class="font-semibold text-indigo-600">Acerca de &rarr;</a>
                     </div>
                 </div>
-        
+
                 <div class="text-center">
-                    <h1 class="text-5xl font-semibold text-gray-900 sm:text-7xl">Bienvenido a tu foro favorito</h1>                        
+                    <h1 class="text-5xl font-semibold text-gray-900 sm:text-7xl">Bienvenido a tu foro favorito</h1>
                     <p class="my-8 text-lg font-medium text-gray-500 sm:text-xl">Es un espacio para compartir, aprender y crecer en el mundo de la programación. Únete a nuestra comunidad, participa en discusiones y aprende de otros profesionales.</p>
                     <div class="flex items-center justify-center gap-6">
-                        <a href="#" class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500">Preguntar</a>
+                        <a href="{{ route('questions.create') }}" class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500">Preguntar</a>
                         <a href="#" class="text-sm font-semibold text-gray-900">Login &rarr;</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="mx-auto max-w-4xl px-4 mb-8">
         {{ $slot }}
     </div>
 </body>
+
 </html>
