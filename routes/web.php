@@ -12,6 +12,8 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 
 Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
 
+Route::get('questions', [QuestionController::class, 'index'])->name('questions.index');
+
 Route::delete('questions/{question}', [QuestionController::class, 'destroy'])->name('questions.destroy');
 
 Route::get('blog', [BlogController::class, 'getPosts'])->name('blog');
