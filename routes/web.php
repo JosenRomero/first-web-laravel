@@ -22,6 +22,10 @@ Route::delete('questions/{question}', [QuestionController::class, 'destroy'])->n
 
 Route::get('blog', [BlogController::class, 'getPosts'])->name('blog');
 
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+
+Route::post('posts', [PostController::class, 'save'])->name('posts.save');
+
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');

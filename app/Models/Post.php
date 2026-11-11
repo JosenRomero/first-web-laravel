@@ -11,6 +11,13 @@ class Post extends Model
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory, HasHeart;
 
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'title',
+        'content',
+    ];
+
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
