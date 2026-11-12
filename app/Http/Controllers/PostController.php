@@ -50,4 +50,31 @@ class PostController extends Controller
 
         return redirect()->route('blog', $post);
     }
+
+    public function edit(Post $post)
+    {
+        $categories = Category::all();
+
+        return view('posts.edit', [
+            'post' => $post,
+            'categories' => $categories,
+        ]);
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $request->validate([
+            'category_id' => 'required|exists:categories,id',
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+
+        $post->update([
+            'category_id' => $request->category_id,
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('posts.show', $post);
+    }
 }

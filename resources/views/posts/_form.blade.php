@@ -1,6 +1,6 @@
 <div class="mb-4">
   <label class="text-xs font-medium text-gray-700">Título de post</label>
-  <input type="text" name="title" class="w-full p-2 border border-gray-700 rounded-md" value="{{ old('title') }}" />
+  <input type="text" name="title" class="w-full p-2 border border-gray-700 rounded-md" value="{{ old('title', $post->title ?? '') }}" />
 
   @error('title')<div class="text-red-500 text-xs">{{ $message }}</div>@enderror
 </div>
@@ -15,7 +15,7 @@
     <option
       class="text-gray-700"
       value="{{ $category->id }}"
-      @if ($category->id == old('category_id')) selected @endif
+      @if ($category->id == old('category_id', $post->category_id ?? '')) selected @endif
       >
       {{ $category->name }}
     </option>
@@ -29,7 +29,7 @@
 
 <div class="mb-4">
   <label class="text-xs font-medium text-gray-700">Contenido</label>
-  <textarea name="content" rows="6" class="w-full p-2 border border-gray-700 rounded-md">{{ old('content') }}</textarea>
+  <textarea name="content" rows="6" class="w-full p-2 border border-gray-700 rounded-md">{{ old('content', $post->content ?? '') }}</textarea>
 
   @error('description')<div class="text-red-500 text-xs">{{ $message }}</div>@enderror
 </div>

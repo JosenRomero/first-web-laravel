@@ -18,6 +18,10 @@
                     {{ $post->created_at->diffForHumans() }}
                 </p>
                 <div class="flex items-center gap-2">
+                    <a href="{{ route('posts.edit', $post) }}" class="text-xs font-semibold hover:underline">
+                        Edit
+                    </a>
+
                     <form action="{{ route('posts.destroy', $post) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este post?');">
                         @csrf
                         @method('DELETE')
