@@ -14,6 +14,10 @@ Route::get('questions/create', [QuestionController::class, 'create'])->name('que
 
 Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
 
+Route::get('questions/{question}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
+
+Route::put('questions/{question}', [QuestionController::class, 'update'])->name('questions.update');
+
 Route::post('questions', [QuestionController::class, 'save'])->name('questions.save');
 
 Route::get('questions', [QuestionController::class, 'index'])->name('questions.index');
