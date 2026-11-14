@@ -18,7 +18,7 @@ class AnswerController extends Controller
         // create answer
         $question->answers()->create([
             'content' => $request->newAnswer,
-            'user_id' => 20, // TODO: Replace with authenticated user ID
+            'user_id' => auth()->id(),
         ]);
 
         // go to questions view

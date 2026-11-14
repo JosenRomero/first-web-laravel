@@ -17,20 +17,20 @@ trait HasHeart
     if ($this->relationLoaded('hearts')) {
       return $this->hearts->isNotEmpty();
     }
-    return $this->hearts()->where('user_id', 20)->exists(); // TODO: Replace user ID
+    return $this->hearts()->where('user_id', auth()->id())->exists();
   }
 
   // Adds a like from the user to the answer, question or comment
   public function heart()
   {
     return $this->hearts()->create([
-      'user_id' => 20, // TODO: Replace user ID
+      'user_id' => auth()->id(),
     ]);
   }
 
   // Removes a like from the user to the answer, question or comment
   public function unHeart()
   {
-    return $this->hearts()->where('user_id', 20)->delete(); // TODO: Replace user ID
+    return $this->hearts()->where('user_id', auth()->id())->delete();
   }
 }
