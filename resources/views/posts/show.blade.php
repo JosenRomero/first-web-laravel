@@ -17,6 +17,8 @@
                     </span>
                     {{ $post->created_at->diffForHumans() }}
                 </p>
+
+                @auth
                 <div class="flex items-center gap-2">
                     <a href="{{ route('posts.edit', $post) }}" class="text-xs font-semibold hover:underline">
                         Edit
@@ -30,6 +32,8 @@
                         </button>
                     </form>
                 </div>
+                @endauth
+
             </div>
         </div>
     </div>

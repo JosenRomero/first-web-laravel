@@ -18,7 +18,7 @@ new class extends Component {
 
         $this->commentable->comments()->create([
             'content' => $this->newComment,
-            'user_id' => 20, // TODO: Replace with the actual user ID
+            'user_id' => auth()->id(),
         ]);
 
         $this->reset('newComment', 'showForm');
@@ -64,6 +64,8 @@ new class extends Component {
 
     </ul>
 
+    @auth
+
     @if (!$showForm)
     <p class="text-gray-500">
         <a wire:click="toggle" class="rounded-md text-xs hover:underline cursor-pointer">
@@ -84,4 +86,11 @@ new class extends Component {
     </form>
     @endif
 
+    @else
+    <p class="text-gray-500">
+        <a href="{{ route('login') }}" class="text-blue-600 hover:underline">
+            Inicia sesión para comentar
+        </a>
+    </p>
+    @endauth
 </div>

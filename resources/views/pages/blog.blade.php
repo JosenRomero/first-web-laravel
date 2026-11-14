@@ -1,8 +1,10 @@
 <x-forum.layouts.app>
 
+  @auth
   <div class="py-4">
     <a href="{{ route('posts.create') }}" class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500">Agregar Post</a>
   </div>
+  @endauth
 
   <p class="my-5 text-2xl text-center">All posts</p>
 
