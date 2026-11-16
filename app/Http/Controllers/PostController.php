@@ -6,13 +6,14 @@ use App\Http\Requests\SavePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Support\PostShowLoader;
 
 class PostController extends Controller
 {
-    public function show(Post $post)
+    public function show(Post $post, PostShowLoader $loader)
     {
 
-        $post->load('user');
+        $loader->load($post);
 
         return view('posts.show', [
             'post' => $post,
