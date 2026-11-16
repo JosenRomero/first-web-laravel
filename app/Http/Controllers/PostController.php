@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SavePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -33,13 +34,8 @@ class PostController extends Controller
         ]);
     }
 
-    public function save(Request $request)
+    public function save(SavePostRequest $request)
     {
-        $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-        ]);
 
         $post = Post::create([
             'user_id' => auth()->id(),
@@ -61,13 +57,8 @@ class PostController extends Controller
         ]);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-        ]);
 
         $post->update([
             'category_id' => $request->category_id,
