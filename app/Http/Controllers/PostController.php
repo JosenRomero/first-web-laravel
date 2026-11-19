@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Support\PostShowLoader;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -39,10 +40,8 @@ class PostController extends Controller
     {
 
         $post = Post::create([
-            'user_id' => auth()->id(),
-            'category_id' => $request->category_id,
-            'title' => $request->title,
-            'content' => $request->content,
+            'user_id' => Auth::id(),
+            ...$request->validated(),
         ]);
 
         return redirect()->route('blog', $post);
