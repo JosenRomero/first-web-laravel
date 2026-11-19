@@ -10,18 +10,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 
-Route::get('questions', [QuestionController::class, 'index'])->name('questions.index');
+Route::get('forum', [QuestionController::class, 'index'])->name('questions.index');
 
-Route::get('questions/create', [QuestionController::class, 'create'])->name('questions.create')->middleware('auth');
-Route::post('questions', [QuestionController::class, 'save'])->name('questions.save')->middleware('auth');
+Route::get('forum/create', [QuestionController::class, 'create'])->name('questions.create')->middleware('auth');
+Route::post('forum', [QuestionController::class, 'save'])->name('questions.save')->middleware('auth');
 
-Route::get('questions/{question}/edit', [QuestionController::class, 'edit'])->name('questions.edit')->middleware('auth');
-Route::put('questions/{question}', [QuestionController::class, 'update'])
+Route::get('forum/{question:slug}/edit', [QuestionController::class, 'edit'])->name('questions.edit')->middleware('auth');
+Route::put('forum/{question}', [QuestionController::class, 'update'])
     ->name('questions.update')
     ->middleware('auth', 'can:update,question');
 
-Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
-Route::delete('questions/{question}', [QuestionController::class, 'destroy'])
+Route::get('forum/{question:slug}', [QuestionController::class, 'show'])->name('questions.show');
+Route::delete('forum/{question}', [QuestionController::class, 'destroy'])
     ->name('questions.destroy')
     ->middleware('auth', 'can:delete,question');
 

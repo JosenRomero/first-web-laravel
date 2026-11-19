@@ -13,7 +13,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
+    //use WithoutModelEvents;
 
     /**
      * Seed the application's database.
@@ -61,6 +61,5 @@ class DatabaseSeeder extends Seeder
             'commentable_id' => fn() => $posts->random()->id,
             'commentable_type' => Post::class,
         ]);
-
     }
 }
